@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   <context:annotation-config />
+   
+   <bean name="address1" class="com.kdvamja.springcorestart.autowired.entity.Address"
+   		p:addressId="0001"
+   		p:street="varachha"
+   		p:city="Surat"
+   />
+   
+   <bean name="address" class="com.kdvamja.springcorestart.autowired.entity.Address"
+   		p:addressId="0002"
+   		p:street="Satellite"
+   		p:city="Ahmedabad"
+   />
+   
+   <bean name="student" class="com.kdvamja.springcorestart.autowired.entity.Student" 
+   		 autowire="constructor" 
+   		 p:studentId="001"
+   		 p:studentName="Keyur"	 
+   	/>
+   	
+   	<bean name="order" class="com.kdvamja.springcorestart.autowired.entity.Order"
+   		p:orderId="101011"
+   		p:itemName="mobile"
+   		p:amount="10,000"
+   	/>
+   	
+   	<bean name="customer" class="com.kdvamja.springcorestart.autowired.entity.Customer"
+   		p:customerId="00001"
+   	/>
+</beans>

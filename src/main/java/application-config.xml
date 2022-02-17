@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   <!-- START::SET BEANS DATA FIRST TYPE -->
+   <bean name="user" class="com.kdvamja.springcorestart.entity.User">
+		<property name="userId">
+			<value>0001</value>
+		</property>   
+		<property name="username">
+			<value>Keyur Vamja</value>
+		</property>
+		<property name="address">
+			<value>Ahmedabad, Gujrat.</value>
+		</property>
+		<property name="phones">
+			<set>
+				<value>9512247271</value>
+				<value>9904946875</value>
+				<value>9512247271</value>
+				<value>9537269709</value>
+			</set>
+		</property>
+		<property name="books">
+			<list>
+				<value>Half Girlfriend</value>
+				<value>Rich Dad, Poor Dad</value>
+				<value>Two States</value>
+				<value>3 idots</value>
+				<null/>
+			</list>
+		</property>
+		<property name="courses">
+			<map>
+				<entry key="php" value="2 Months" />
+				<entry key="java" value="6 Months"/>
+				<entry key="nodeJs" value="3 Months"/>
+			</map>
+		</property>
+		<property name="projects">
+			<list>
+				<ref bean="projectEcom"/>
+				<ref bean="projectSongStore" />
+			</list>
+		</property>
+   </bean>
+   <!-- END::SET BEANS DATA FIRST TYPE -->
+   
+   <!-- START::SET BEANS DATA SECOND TYPE -->   
+   <bean name="userOne" class="com.kdvamja.springcorestart.entity.User">
+   		<property name="userId" value="0002" />
+   		<property name="username" value="Ketan Patel" />
+   		<property name="address" value="Babra, Gujrat." />
+   </bean>
+   <!-- END::SET BEANS DATA SECOND TYPE -->
+   
+   <!-- START::SET BEANS DATA THIRD TYPE -->
+   <bean name="userUsingPSchema" class="com.kdvamja.springcorestart.entity.User" 
+   		p:userId="0003"
+   		p:username="Umang Merja"
+   		p:address="Morbi, Gujrat."
+   		p:projects-ref="projectEcom"
+   />
+   <!-- END::SET BEANS DATA THIRD TYPE -->
+   
+   <bean name="projectEcom" class="com.kdvamja.springcorestart.entity.Project" 
+   		p:projectId="0101"
+   		p:title="Tech-Toys - E-commerce Portal"
+   		p:description="Portal for buy or sell daily uses based products."
+   />
+   
+   <bean name="projectSongStore" class="com.kdvamja.springcorestart.entity.Project"
+   		p:projectId="0102"
+   		p:title="Song Store - Listen your Favorite Song on the Go."
+   		p:description="Listen Songs on the Go, Create playlist and share it with your friends as well."
+   />
+   
+   <!-- START::CONSTRUCTOR BASED CLASS PROPERTY VALUE -->
+   <bean name="engSub" class="com.kdvamja.springcorestart.entity.ResultSubject">
+   		<constructor-arg value="10001" type="Long" />
+   		<constructor-arg value="English" type="String" />
+   		<constructor-arg value="100" type="float" />
+   		<constructor-arg value="92" type="float" />
+   </bean>
+   <bean name="gujratiSub" class="com.kdvamja.springcorestart.entity.ResultSubject">
+   		<constructor-arg value="10002" type="Long" />
+   		<constructor-arg value="Gujrati" type="String" />
+   		<constructor-arg value="100" type="float" />
+   		<constructor-arg value="81" type="float" />
+   </bean>
+   <bean name="hindiSub" class="com.kdvamja.springcorestart.entity.ResultSubject">
+   		<constructor-arg value="10003" type="Long" />
+   		<constructor-arg value="Hindi" type="String" />
+   		<constructor-arg value="100" type="float" />
+   		<constructor-arg value="87" type="float" />
+   </bean>
+   
+   <bean name="stuResult" class="com.kdvamja.springcorestart.entity.StudentResult">
+   		<constructor-arg value="20001" type="Long" index="0" />
+   		<constructor-arg value="8" type="int" index="1" />
+   		<constructor-arg value="86.6" type="float" index="2" />
+   		<constructor-arg value="2013-2014" type="String" index="3" />
+   		<constructor-arg index="4">
+   			<list>
+   				<ref bean="engSub"/>
+   				<ref bean="gujratiSub"/>
+   				<ref bean="hindiSub"/>
+   			</list>
+   		</constructor-arg>
+   </bean>
+   
+   <bean name="student" class="com.kdvamja.springcorestart.entity.Student">
+   		<constructor-arg value="30001" type="Long" />
+   		<constructor-arg value="Keyur Patel" type="String" />
+   		<constructor-arg value="10" type="int" />
+   		<constructor-arg value="2015-2016" type="String" />
+   		<constructor-arg>
+   			<list>
+   				<ref bean="stuResult"/>
+   			</list>
+   		</constructor-arg>
+   </bean>
+   <!-- END::CONSTRUCTOR BASED CLASS PROPERTY VALUE -->
+</beans>
